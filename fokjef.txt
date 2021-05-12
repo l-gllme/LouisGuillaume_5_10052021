@@ -2,3 +2,4 @@ select hmtl
 https://developer.mozilla.org/fr/docs/Web/HTML/Element/select
 
 https://www.youtube.com/watch?v=umHdBuTw98c
+https://www.youtube.com/watch?v=Kw5tC5nQMRY

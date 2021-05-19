@@ -190,7 +190,7 @@ header img {
   background-color: #f3e9f1;
   margin: auto;
   padding: 1em;
-  height: auto;
+  height: 90%;
   border-radius: 1em;
 }
 
@@ -200,9 +200,6 @@ header img {
   justify-content: space-around;
   padding: 1em;
   margin-bottom: 5em;
-}
-#basket-recap p {
-  padding: 0.2em;
 }
 
 .input--custom {
@@ -216,8 +213,4 @@ header img {
   margin: auto;
 }
 
-#flex--price {
-  display: flex;
-}
-
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=stykle.map */

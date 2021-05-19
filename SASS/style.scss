@@ -192,8 +192,13 @@ header{
 		color: white;
 	}
 }
+
+
 	
-// panier //////////////////////////////////
+// ----- Panier ----- //
+
+
+
 .basket-section{
 	width: 80%;
 	display: flex;
@@ -202,7 +207,7 @@ header{
 	background-color: $rose-pale;
 	margin: auto;
 	padding: 1em;
-	height: 90%;
+	height: auto;
 	border-radius: 1em;
 }
 #basket-recap{
@@ -211,10 +216,12 @@ header{
 	justify-content: space-around;
 	padding: 1em;
 	margin-bottom: 5em;
+	p{
+		padding: 0.2em;
+	}
 	
 }
-#send-inputs{
-}
+
 .input--custom{
 	padding: 0.5em;
 	display: flex;
@@ -223,4 +230,7 @@ header{
 #btn-submit{
 	padding:0.5em;
 	margin: auto;
+}
+#flex--price{
+	display: flex;
 }

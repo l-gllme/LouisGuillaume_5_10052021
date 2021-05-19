@@ -4,7 +4,6 @@ function getParameter( parameterName){
 }
 
 const id = getParameter("id");
-console.log(id);
 
 const img = document.getElementById('img');
 const name = document.getElementById('name');
@@ -17,7 +16,6 @@ fetch('http://localhost:5000/api/teddies/' + id)
 	.then(res => {
 		if(res.ok){
 			res.json().then(data =>{
-				console.log(data);
 				img.src = data.imageUrl
 				price.innerHTML = "Prix: "+data.price/100 + "€"
 				name.innerHTML = data.name
@@ -29,17 +27,21 @@ fetch('http://localhost:5000/api/teddies/' + id)
 					newOption.innerHTML = data.colors[i]
 					optionSelect.appendChild(newOption);
 				}
+				let product = {
+					_id: id,
+					productName: data.name,
+					color: optionSelect.value,
+					price: data.price/100
+				};
+				let productJSON = JSON.stringify(product);
+				const sendToBasket = document.getElementById('add-basket');
+				sendToBasket.addEventListener('click',() => {
+					alert("Produit ajouté au panier !")
+					let randomId = Date.now() ;
+					localStorage.setItem(randomId,productJSON);
+				});
 			})
 		}else{
 			console.log("Error");
 		}
 	})
-
-const sendToBasket = document.getElementById('add-basket');
-let storage = 1 ;
-
-sendToBasket.addEventListener('click',() => {
-	alert("Produit ajouté au panier !")
-	localStorage.setItem(storage, id);
-	storage++;
-});

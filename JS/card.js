@@ -1,10 +1,12 @@
+//Fonction de recupération de l'id dans l'URL
 function getParameter( parameterName){
 	let parameter = new URLSearchParams( window.location.search);
 	return parameter.get(parameterName);
 }
-
+//Récupération de l'id
 const id = getParameter("id");
 
+// Initialistations de variables
 const img = document.getElementById('img');
 const name = document.getElementById('name');
 const description = document.getElementById('description');
@@ -12,6 +14,7 @@ const price = document.getElementById('price');
 
 const optionSelect = document.getElementById('option-select');
 
+//recupération des données de lapi pour un seul objet
 fetch('http://localhost:5000/api/teddies/' + id)
 	.then(res => {
 		if(res.ok){
@@ -23,7 +26,7 @@ fetch('http://localhost:5000/api/teddies/' + id)
 
 				for(i in data.colors){
 					const newOption = document.createElement("option");
-					newOption.value = data.colors[i]
+					newOption.value = data.colors[i];
 					newOption.innerHTML = data.colors[i]
 					optionSelect.appendChild(newOption);
 				}
@@ -33,10 +36,11 @@ fetch('http://localhost:5000/api/teddies/' + id)
 					color: optionSelect.value,
 					price: data.price/100
 				};
+				//envoi des données au local storage
 				let productJSON = JSON.stringify(product);
 				const sendToBasket = document.getElementById('add-basket');
 				sendToBasket.addEventListener('click',() => {
-					alert("Produit ajouté au panier !")
+					alert("Produit ajouté au panier !");
 					let randomId = Date.now() ;
 					localStorage.setItem(randomId,productJSON);
 				});

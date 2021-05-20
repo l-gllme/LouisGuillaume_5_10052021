@@ -41,3 +41,20 @@ console.log(idArray);
 
 // ----- Informations de commande ----- //
 
+inputFirstName = document.getElementById("text1");
+inputLastName = document.getElementById("text2");
+inputAdress = document.getElementById("text3");
+inputCity = document.getElementById("text4");
+inputEmail = document.getElementById("text5");
+
+submitBtn = document.getElementById("btn-submit");
+
+// Btn pour vider le panier
+clearBtn = document.getElementById("clear--basket");
+clearBtn.addEventListener('click',() =>{
+    localStorage.clear();
+    document.location.reload();
+    alert("Panié vidé");
+});
+    
+

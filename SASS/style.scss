@@ -197,7 +197,24 @@ header{
 	
 // ----- Panier ----- //
 
-
+#section1{
+	margin-bottom: 2em;
+	#basket-recap{
+		div{
+			width: 30%;
+			text-align: center;
+		}
+		h3{
+			margin-bottom: 1em;
+			background-color: rgba(196, 196, 196, 0.76);
+			border-radius: 1em;
+			width: 60%;
+			margin: auto;
+			padding: 0.1em;
+			font-weight: normal;
+		}
+	}
+}
 
 .basket-section{
 	width: 80%;
@@ -233,4 +250,19 @@ header{
 }
 #flex--price{
 	display: flex;
+}
+.input{
+	border: none;
+	padding: 0.5em;
+	border-radius: 1em;
+}
+#clear--basket{
+	text-align: center;
+	width: 15%;
+	background-color: #f34541;
+	padding: 0.4em;
+	margin-top: 0.5em;
+	border-radius: 1em;
+	color: #fff;
+	cursor: pointer;
 }

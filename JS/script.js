@@ -1,7 +1,7 @@
-// //////////////////////////////////////////////////
 
 const productSection = document.getElementById('widthMain')
 
+//récupération des données de l'api puis incrustation dynamique dans l'HTML
 fetch('http://localhost:5000/api/teddies')
 	.then(res => {
 		if (res.ok) {
@@ -10,18 +10,18 @@ fetch('http://localhost:5000/api/teddies')
 				for(let i in data){
 
 					const newDiv = document.createElement("div");
-					newDiv.classList.add('product')
-					newDiv.setAttribute('id', data[i]._id)
+					newDiv.classList.add('product');
+					newDiv.setAttribute('id', data[i]._id);
 					const newA = document.createElement("a");
 					newA.href = "HTML/card.html?id="+data[i]._id;
 					const secondDiv = document.createElement("div");
-					secondDiv.classList.add('absoluteProduct')
+					secondDiv.classList.add('absoluteProduct');
 					const newH2 = document.createElement("h2");
-					newH2.innerHTML = data[i].name
+					newH2.innerHTML = data[i].name;
 					const newP = document.createElement("p");
-					newP.innerHTML = data[i].price/100 + "€"
+					newP.innerHTML = data[i].price/100 + "€";
 					const newImg = document.createElement("img");
-					newImg.src = data[i].imageUrl
+					newImg.src = data[i].imageUrl;
 
 					productSection.appendChild(newDiv);
 					newDiv.appendChild(newA);
@@ -36,7 +36,3 @@ fetch('http://localhost:5000/api/teddies')
 			console.log('Error');
 		}
 	})
-
-// //////////////////////////////////////////////////
-
-

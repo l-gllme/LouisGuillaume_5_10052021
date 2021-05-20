@@ -188,10 +188,42 @@ const validAdress = function(inputAdress){
     }
 };
 
+// Création dun object contennat les données au moment du click sur le button "passer la commande"
 submitBtn.addEventListener('click',() =>{
-    if (adressIsValid && cityIsValid && lastNameIsValid && emailIsValid && nameIsValid ){
-        
-    } else {
-        alert("Les champs ne sont pas valides")
-    }
-})
+    //vérifiaction des données
+    if (adressIsValid && cityIsValid && lastNameIsValid && emailIsValid && nameIsValid && idArray != 0){
+        const clientData ={
+            contact: {
+                firstName: form.name.value,
+                lastName: form.nom.value,
+                address: form.adress.value,
+                city: form.city.value,
+                email: form.email.value 
+            },
+            products: idArray
+        };
+        //envoie des données a lapi
+        fetch("http://localhost:5000/api/teddies/order", {
+            method :"POST",
+            headers:{
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify(clientData)
+        })
+        //recuperation de la reponse et envoie de celle ci a la page confirmation par l'url
+        .then(res => {
+            if (res.ok) {
+                res.json().then(data =>{
+                    console.log(data);
+                    localStorage.clear();
+                    document.location.href="../HTML/confirmation.html?id="+data.orderId+"&price="+sumPrice; 
+                });
+            }else {
+                console.log("error");
+            }
+        });
+    }else {
+        alert("Les champs ne sont pas valides ou vous n'avez pas commander de produits !");
+    };
+});

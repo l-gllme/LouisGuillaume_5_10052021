@@ -13,6 +13,7 @@ fetch('http://localhost:5000/api/teddies')
 					newDiv.classList.add('product');
 					newDiv.setAttribute('id', data[i]._id);
 					const newA = document.createElement("a");
+					//passage des données pas lurl a la page card lors du click
 					newA.href = "HTML/card.html?id="+data[i]._id;
 					const secondDiv = document.createElement("div");
 					secondDiv.classList.add('absoluteProduct');

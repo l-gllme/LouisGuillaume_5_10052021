@@ -40,14 +40,18 @@ fetch('http://localhost:5000/api/teddies/' + id)
 				//envoi des données au local storage
 				const sendToBasket = document.getElementById('add-basket');
 				sendToBasket.addEventListener('click',() => {
-					product.color = optionSelect.value;
-					let productJSON = JSON.stringify(product);
-					alert("Produit ajouté au panier !");
-					let randomId = Date.now();
-					localStorage.setItem(randomId,productJSON);
+				product.color = optionSelect.value;
+				sendToLocalStorage(product);
 				});
 			})
 		}else{
 			console.log("Error");
 		}
 	})
+
+function sendToLocalStorage(product){
+	let productJSON = JSON.stringify(product);
+	alert("Produit ajouté au panier !");
+	let randomId = Date.now();
+	localStorage.setItem(randomId,productJSON);
+};

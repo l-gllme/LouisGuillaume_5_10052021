@@ -181,7 +181,6 @@ const validation = function(small,texte,isvalid){
 // Création dun object contennat les données au moment du click sur le button "passer la commande"
 submitBtn.addEventListener('click',() =>{
     //vérifiaction des données
-    console.log(adressIsValid,cityIsValid);
     if (adressIsValid && cityIsValid && lastNameIsValid && emailIsValid && nameIsValid && idArray != 0){
         const clientData ={
             contact: {

@@ -36,8 +36,8 @@ fetch('http://localhost:5000/api/teddies/' + id)
 					color: optionSelect.value,
 					price: data.price/100
 				};
-				//envoi des données au local storage
 				
+				//envoi des données au local storage
 				const sendToBasket = document.getElementById('add-basket');
 				sendToBasket.addEventListener('click',() => {
 					product.color = optionSelect.value;

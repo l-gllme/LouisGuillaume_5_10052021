@@ -6,7 +6,6 @@ fetch('http://localhost:5000/api/teddies')
 	.then(res => {
 		if (res.ok) {
 			res.json().then(data => {
-				console.log(data);
 				for(let i in data){
 
 					const newDiv = document.createElement("div");
@@ -31,7 +30,6 @@ fetch('http://localhost:5000/api/teddies')
 					secondDiv.appendChild(newP);
 					newA.appendChild(newImg);
 				}
-
 			})
 		}else {
 			console.log('Error');

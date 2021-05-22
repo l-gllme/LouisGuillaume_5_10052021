@@ -90,15 +90,10 @@ const validEmail = function(inputEmail){
     );
     let testEmail = emailRegEx.test(inputEmail.value);
     let small = document.getElementById("small-email")
+    validation(small,"Email ",testEmail);
     if (testEmail) {
-        small.innerHTML ="Adresse Valide";
-        small.classList.remove('wrong');
-        small.classList.add('right');
         emailIsValid = true;
     }else{
-        small.innerHTML = 'Adresse non Valide';
-        small.classList.remove('right');
-        small.classList.add('wrong');
         emailIsValid = false;
     }
 };
@@ -111,16 +106,11 @@ const validName = function(inputName){
         'g'
     );
     let testName = nameRegEx.test(inputName.value);
-    let smallName = document.getElementById("small-name")
+    let smallName = document.getElementById("small-name");
+    validation(smallName,"Prénom ",testName);
     if (testName) {
-        smallName.innerHTML ="Prénom Valide";
-        smallName.classList.add('right');
-        smallName.classList.remove('wrong');
         nameIsValid = true;
     }else{
-        smallName.innerHTML = 'Prénom non Valide';
-        smallName.classList.add('wrong');
-        smallName.classList.remove('right');
         nameIsValid = false;
     }
 };
@@ -133,15 +123,10 @@ const validLastName = function(inputlastname){
     );
     let testlastname = lastnameRegEx.test(inputlastname.value);
     let smalllastname = document.getElementById("small-lastname")
+    validation(smalllastname,"Nom ",testlastname);
     if (testlastname) {
-        smalllastname.innerHTML ="Nom Valide";
-        smalllastname.classList.add('right');
-        smalllastname.classList.remove('wrong');
         lastNameIsValid = true;
     }else{
-        smalllastname.innerHTML = 'Nom non Valide';
-        smalllastname.classList.add('wrong');
-        smalllastname.classList.remove('right');
         lastNameIsValid = false;
     }
 };
@@ -154,18 +139,15 @@ const validCity = function(inputCity){
     );
     let testCity = CityRegEx.test(inputCity.value);
     let smallCity = document.getElementById("small-city")
+    validation(smallCity,"Ville ",testCity);
     if (testCity) {
-        smallCity.innerHTML ="Ville Valide";
-        smallCity.classList.add('right');
-        smallCity.classList.remove('wrong');
         cityIsValid = true;
-    }else{
-        smallCity.innerHTML = 'Ville non Valide';
-        smallCity.classList.add('wrong');
-        smallCity.classList.remove('right');
+    } else {
         cityIsValid = false;
-    }
+    };
+
 };
+
 // Fonction validation Adresse
 const validAdress = function(inputAdress){
     // RegEx Adresse 
@@ -175,22 +157,31 @@ const validAdress = function(inputAdress){
     );
     let testAdress = AdressRegEx.test(inputAdress.value);
     let smallAdress = document.getElementById("small-adress")
+    validation(smallAdress,"Adresse ",testAdress);
     if (testAdress) {
-        smallAdress.innerHTML ="Adresse Valide";
-        smallAdress.classList.add('right');
-        smallAdress.classList.remove('wrong');
         adressIsValid = true;
     }else{
-        smallAdress.innerHTML = 'Adresse non Valide';
-        smallAdress.classList.add('wrong');
-        smallAdress.classList.remove('right');
         adressIsValid = false;
     }
 };
 
+//Fonction de validations des champs
+const validation = function(small,texte,isvalid){
+    texte+= isvalid? "valide" : "non valide";
+    small.innerHTML = texte;
+    if (isvalid) {
+        small.classList.add('right');
+        small.classList.remove('wrong');
+    } else {
+        small.classList.add('wrong');
+        small.classList.remove('right');
+    }
+}
+
 // Création dun object contennat les données au moment du click sur le button "passer la commande"
 submitBtn.addEventListener('click',() =>{
     //vérifiaction des données
+    console.log(adressIsValid,cityIsValid);
     if (adressIsValid && cityIsValid && lastNameIsValid && emailIsValid && nameIsValid && idArray != 0){
         const clientData ={
             contact: {
@@ -215,7 +206,6 @@ submitBtn.addEventListener('click',() =>{
         .then(res => {
             if (res.ok) {
                 res.json().then(data =>{
-                    console.log(data);
                     localStorage.clear();
                     document.location.href="../HTML/confirmation.html?id="+data.orderId+"&price="+sumPrice; 
                 });

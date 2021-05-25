@@ -29,18 +29,16 @@ fetch('http://localhost:5000/api/teddies/' + id)
 					newOption.value = data.colors[i];
 					newOption.innerHTML = data.colors[i]
 					optionSelect.appendChild(newOption);
-				}
-				let product = {
-					_id: id,
-					productName: data.name,
-					color: optionSelect.value,
-					price: data.price/100
-				};
-				
+				}	
 				//envoi des données au local storage
 				const sendToBasket = document.getElementById('add-basket');
 				sendToBasket.addEventListener('click',() => {
-				product.color = optionSelect.value;
+					let product = {
+						_id: id,
+						productName: data.name,
+						color: optionSelect.value,
+						price: data.price/100
+					};
 				sendToLocalStorage(product);
 				});
 			})

@@ -177,7 +177,6 @@ const validation = function(small,texte,isvalid){
         small.classList.remove('right');
     }
 }
-
 // Création dun object contennat les données au moment du click sur le button "passer la commande"
 submitBtn.addEventListener('click',() =>{
     //vérifiaction des données
@@ -206,7 +205,7 @@ submitBtn.addEventListener('click',() =>{
             if (res.ok) {
                 res.json().then(data =>{
                     localStorage.clear();
-                    document.location.href="../HTML/confirmation.html?id="+data.orderId+"&price="+sumPrice; 
+                    document.location.href="../HTML/confirmation.html?id="+data.orderId+"&price="+sumPrice+"&name="+form.name.value; 
                 });
             }else {
                 console.log("error");

@@ -6,6 +6,7 @@ fetch('http://localhost:5000/api/teddies')
 	.then(res => {
 		if (res.ok) {
 			res.json().then(data => {
+				console.log(data);
 				for(let i in data){
 
 					const newDiv = document.createElement("div");
